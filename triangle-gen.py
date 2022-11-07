@@ -1,4 +1,5 @@
-#triangle-gen3
+#triangle-gen4
+#Clean up
 
 #https://www.omnicalculator.com/math/trigonometry
 #Trig from/using area - TODO 11:14am 7/11/2022 i1
@@ -27,6 +28,14 @@ def solve_trig_triangle(is_LAA, lengths, angles):
     final_angle_A = None
     final_angle_B = None
     final_angle_C = None
+    list_of_tests = [ #Could create list at beginning of doing tests and then check by using "in" keyword. Is None in list of tests. However, adding test variables in the same section as where they are declared is more intuative.
+        final_length_a, #Unless python could instead have a list of pointers pointing towards the variables instead of storing the array as a new set of variables.
+        final_length_b,
+        final_length_c,
+        final_angle_A,
+        final_angle_B,
+        final_angle_C,
+        ]
 
     #Data validation
     if isinstance(lengths, int): #Repack integers into arrays
@@ -46,30 +55,10 @@ def solve_trig_triangle(is_LAA, lengths, angles):
         print(f"given_angle_A: {given_angle_A}")
         print(f"given_angle_B: {given_angle_B}")
         
-        #solved_angle_b = ( given_length_a  * math.sin(given_angle_B) ) / math.sin( given_angle_A )
-        #print(f"solved_angle_b: {solved_angle_b}")
 
-        #https://stackoverflow.com/questions/18583214/calculate-angle-of-triangle-python
-        '''
-        A = 7
-        B = 7
-        C = 9.899
-        from math import acos, degrees
-        degrees(acos((A * A + B * B - C * C)/(2.0 * A * B)))
-        '''
-
-        #https://github.com/Steenaire/triangle-calculator
-        #https://github.com/Steenaire/triangle-calculator/blob/ff8a7978b08f2866634b3373a06da0be4200000d/draw-a-triangle-34.py#L29
-        '''
-        def LawOfSines(side, angleA, angleC):
-        newSide = abs(side*(math.sin(math.radians(angleA)))/math.sin(math.radians(angleC)))
-        return newSide
-        '''
-        #solved_angle_b = abs(given_length_a * (math.sin(math.radians(given_angle_A)))/math.sin(math.radians(given_angle_B) )) ##May be wrong bcause using angle B and not C at end
-        #print(f"solved_angle_b: {solved_angle_b}")
-
-        solved_angle_b = ( given_length_a  * math.sin(math.radians(given_angle_B)) ) / math.sin( math.radians(given_angle_A) )
-        print(f"solved_angle_b: {solved_angle_b}")
+        solved_angle_B = ( given_length_a  * math.sin(math.radians(given_angle_B)) ) / math.sin( math.radians(given_angle_A) )
+        print(f"solved_angle_B: {solved_angle_B}")
+        final_angle_B = solved_angle_B 
 
         
 
@@ -83,6 +72,14 @@ def solve_trig_triangle(is_LAA, lengths, angles):
         given_length_a = lengths[0]
         given_length_b = lengths[1]
         given_angle_B = angles[1]
+
+
+
+    #Tests
+    for t in list_of_tests:
+        #print( str( isinstance(t, None) ) )
+        print(  (t == None) == False ) #WIP############################
+    print("Tests complete - passed if all are true")
 
 
     
