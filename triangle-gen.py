@@ -1,4 +1,4 @@
-#triangle-gen2
+#triangle-gen3
 
 #https://www.omnicalculator.com/math/trigonometry
 #Trig from/using area - TODO 11:14am 7/11/2022 i1
@@ -46,19 +46,35 @@ def solve_trig_triangle(is_LAA, lengths, angles):
         print(f"given_angle_A: {given_angle_A}")
         print(f"given_angle_B: {given_angle_B}")
         
-        #solved_angle_b = ( given_length_a / math.sin( given_angle_A ) ) * math.sin(given_angle_B)
         #solved_angle_b = ( given_length_a  * math.sin(given_angle_B) ) / math.sin( given_angle_A )
         #print(f"solved_angle_b: {solved_angle_b}")
+
+        #https://stackoverflow.com/questions/18583214/calculate-angle-of-triangle-python
+        '''
+        A = 7
+        B = 7
+        C = 9.899
+        from math import acos, degrees
+        degrees(acos((A * A + B * B - C * C)/(2.0 * A * B)))
+        '''
+
+        #https://github.com/Steenaire/triangle-calculator
+        #https://github.com/Steenaire/triangle-calculator/blob/ff8a7978b08f2866634b3373a06da0be4200000d/draw-a-triangle-34.py#L29
+        '''
+        def LawOfSines(side, angleA, angleC):
+        newSide = abs(side*(math.sin(math.radians(angleA)))/math.sin(math.radians(angleC)))
+        return newSide
+        '''
+        #solved_angle_b = abs(given_length_a * (math.sin(math.radians(given_angle_A)))/math.sin(math.radians(given_angle_B) )) ##May be wrong bcause using angle B and not C at end
+        #print(f"solved_angle_b: {solved_angle_b}")
+
+        solved_angle_b = ( given_length_a  * math.sin(math.radians(given_angle_B)) ) / math.sin( math.radians(given_angle_A) )
+        print(f"solved_angle_b: {solved_angle_b}")
+
         
-        #step1 = given_length_a * math.sin(given_angle_B)
-        step1 = math.sin(given_angle_B)
-        print(f"step1: {step1}")
 
-        #https://www.symbolab.com/solver/equation-calculator/%20%5Cfrac%7Bsin%5Cleft(A%5Cright)%7D%7Ba%7D%3D%5Cfrac%7Bsin%5Cleft(B%5Cright)%7D%7Bx%7D?or=input
-        #https://www.symbolab.com/solver/equation-calculator/%20%5Cfrac%7Bsin%5Cleft(90%5Cright)%7D%7B10%7D%3D%5Cfrac%7Bsin%5Cleft(60%5Cright)%7D%7Bx%7D?or=input
-
-        step2 = given_length_a * math.sin(given_angle_B)
-        print(f"step2: {step2}")
+        
+       
 
 
         
